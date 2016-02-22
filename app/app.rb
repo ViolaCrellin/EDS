@@ -14,7 +14,17 @@ class EDS < Sinatra::Base
 
   get '/stats/:id' do
     stat ||= Stats.get(params[:id]) || halt(404)
-    format_response(stat, request.accept)
+    stat.to_json
+  end
+
+  get '/stats/years/:year' do
+    stat ||= Stats.all(year: params[:year]) || halt(404)
+    stat.to_json
+  end
+
+  get '/stats/govs/:gov' do
+    stat ||= Stats.all(gov: params[:gov]) || halt(404)
+    stat.to_json
   end
 
   # start the server if ruby file executed directly
