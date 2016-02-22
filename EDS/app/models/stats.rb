@@ -1,5 +1,5 @@
 
-class Data
+class Stats
 
 include DataMapper::Resource
 
