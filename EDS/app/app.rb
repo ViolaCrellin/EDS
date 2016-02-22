@@ -5,10 +5,11 @@ require 'sinatra/base'
 require 'JSON'
 require_relative 'data_mapper_setup'
 
+
 class EDS < Sinatra::Base
 
   get '/' do
-    "Hello Data"
+    Data.all.to_json
   end
 
   # start the server if ruby file executed directly
