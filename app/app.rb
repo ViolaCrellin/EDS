@@ -8,10 +8,13 @@ require_relative 'data_mapper_setup'
 
 class EDS < Sinatra::Base
 
+  get '/' do
+    send_file 'public/eds.html'
+  end
+
   get '/stats' do
     Stats.all.to_json
   end
-
 
   get "/stats/search_key_value/*" do
     key_value_array = params['splat'].first.split("/")

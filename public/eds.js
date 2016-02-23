@@ -5,6 +5,8 @@ $(document).ready(function () {
     dataType: 'jsonp',
   }).done(function (stats) {
     console.log(stats);
-    $('#results').html(stats);
+    stats.forEach(function (s) {
+      $('#results').append(s.id);
+    });
   });
 });
