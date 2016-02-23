@@ -1,0 +1,11 @@
+
+.year {
+  position: relative;
+  float: left;
+  display: inline-block;
+  height: 200px;
+  width: 200px;
+  border-radius: 100%;
+  background: pink;
+  text-align: center;
+}

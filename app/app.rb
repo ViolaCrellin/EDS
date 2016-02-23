@@ -9,7 +9,7 @@ require_relative 'data_mapper_setup'
 class EDS < Sinatra::Base
 
   get '/' do
-    send_file 'public/eds.html'
+    send_file 'eds.html'
   end
 
   get '/stats' do
