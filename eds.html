@@ -8,5 +8,26 @@
     <div id="results">
       RESULTS
     </div>
+
+      <form id="data-filters">
+        <input id="start-year" type="text" placeholder="starting year (from 1950)"></input>
+        <input id="end-year" type="text" placeholder="ending year (until 2014)"></input>
+
+      <fieldset>
+          <legend>Data selection:</legend>
+              <input type="checkbox" name="stats" value="gov" />Government
+              <input type="checkbox" name="stats" value="RPI_inflation_percentage_change" />RPI inflation percentage change
+              <input type="checkbox" name="stats" value="CPI_inflation_percentage_change" />CPI inflation percentage change
+              <input type="checkbox" name="stats" value="GDP_per_head" />GDP per head
+              <input type="checkbox" name="stats" value="mean_av_house_price" />Mean average house price
+      </fieldset>
+
+        <button class="small" type="submit">Go</button>
+      </form>
+
+    <div id="range">
+      <h1>range:</h1>
+      <div class="content"></div>
+    </div>
   </body>
 </html>
