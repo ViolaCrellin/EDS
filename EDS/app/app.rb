@@ -35,11 +35,6 @@ class EDS < Sinatra::Base
     search_result = Stats[field]|| halt(404)
     search_result.to_json
   end
-  #
-  # get "/stats/show_properties" do
-  #   Stats.properties
-  # end
-
 
 
 
