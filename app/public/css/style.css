@@ -1,0 +1,12 @@
+
+.year {
+  height: 200px;
+  width: 200px;
+  border-radius: 100%;
+  display: block;
+  clear: both;
+  /*float: left;*/
+  background: pink;
+  text-align: center;
+
+}
