@@ -7,7 +7,6 @@ require_relative 'data_mapper_setup'
 
 
 class EDS < Sinatra::Base
-
   enable :sessions
 
   get '/' do
@@ -15,21 +14,36 @@ class EDS < Sinatra::Base
   end
 
   get '/stats' do
-    Stats.all.to_json
+    start = session[:selection][0]
+    finish = session[:selection][1]
+    Stats.all(:year => (start..finish)).to_json
+    # Stats.all.to_json
   end
 
-  post '/stats/years/range' do
+  post '/stats' do
     start = params[:start]
     finish = params[:finish]
-    stats = Stats.get(:year => (1999..2015))
-    session[:selection] = stats
-    redirect '/stats/years'
+
+    @stats = [start.to_i, finish.to_i]
+    # Stats.get(:year => (start.to_i..finish.to_i))
+    session[:selection] = @stats
+    redirect '/'
   end
 
-  get '/stats/years' do
-    # Stats.get(:year => '1999').to_json
-    session[:selection].to_json
-  end
+  # get 'stats/search' do
+  #   'hello world'
+  # end
+
+  # get 'stats/result' do
+  #   content_type :json
+  #   session[:selection].to_json
+  #   # send_file 'eds.html'
+  # end
+
+  # get '/stats/years' do
+  #   # Stats.get(:year => '1999').to_json
+  #   session[:selection].to_json
+  # end
 
   # start the server if ruby file executed directly
   run! if app_file == $0

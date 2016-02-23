@@ -2,26 +2,16 @@
   <head>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://d3js.org/d3.v3.min.js"></script>
-    <script src="d3datavis.js"></script>
-    <!-- <script src="eds.js"></script> -->
   </head>
   <body>
     <div id="results">
     </div>
 
-      <form id="data-filters" method="post" action="/stats/years/range">
+      <form id="data-filters" action="/stats" method="post">
         <input id="start-year" name="start" type="text" placeholder="starting year (from 1950)"></input>
         <input id="end-year" name="finish" type="text" placeholder="ending year (until 2014)"></input>
+        <input type="hidden" name="_method" value="put"></input>
 
-      <!-- <fieldset>
-          <legend>Data selection:</legend>
-              <input type="checkbox" name="stats" value="gov" />Government
-              <input type="checkbox" name="stats" value="RPI_inflation_percentage_change" />RPI inflation percentage change
-              <input type="checkbox" name="stats" value="CPI_inflation_percentage_change" />CPI inflation percentage change
-              <input type="checkbox" name="stats" value="GDP_per_head" />GDP per head
-              <input type="checkbox" name="stats" value="mean_av_house_price" />Mean average house price
-      </fieldset> -->
 
         <button class="small" type="submit">Go</button>
       </form>
@@ -30,5 +20,7 @@
       <h1>range:</h1>
       <div class="content"></div>
     </div>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="d3datavis.js"></script>
   </body>
 </html>

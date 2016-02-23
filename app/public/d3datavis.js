@@ -21,8 +21,7 @@ var widthScale = d3.scale.linear()
 
   var canvas = d3.select("#visualisation").append("svg")
               .attr("width", width)
-              .attr("height", height)
-              .append("g");
+              .attr("height", height);
 
   canvas.append("g")
         .attr("transform", "translate(0,height)")
