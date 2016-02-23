@@ -7,6 +7,8 @@ gem 'dm-postgres-adapter'
 gem 'rerun'
 gem 'sinatra'
 gem 'json'
+gem 'rest-client'
+
 
 
 group :test do
