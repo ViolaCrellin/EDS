@@ -8,6 +8,7 @@ gem 'rerun'
 gem 'sinatra'
 gem 'json'
 gem 'rest-client'
+gem 'heroku'
 
 
 

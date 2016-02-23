@@ -34,7 +34,6 @@ class EDS < Sinatra::Base
   get "/stats/search_key/*" do
     key_value_array = params['splat'].first.split("/")
     field = key_value_array.first.to_sym
-  require 'pry'; binding.pry
     search_result = Stats[field]|| halt(404)
     search_result.to_json
   end
