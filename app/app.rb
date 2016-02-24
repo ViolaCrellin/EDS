@@ -14,21 +14,20 @@ class EDS < Sinatra::Base
   end
 
   get '/stats' do
-    start = session[:selection][0]
-    finish = session[:selection][1]
-    Stats.all(:year => (start..finish)).to_json
-    # Stats.all.to_json
-  end
-
-  post '/stats' do
     start = params[:start]
     finish = params[:finish]
-
-    @stats = [start.to_i, finish.to_i]
-    # Stats.get(:year => (start.to_i..finish.to_i))
-    session[:selection] = @stats
-    redirect '/'
+    Stats.all(:year => (start.to_i..finish.to_i)).to_json
   end
+
+  # post '/stats' do
+  #   start = params[:start]
+  #   finish = params[:finish]
+  #
+  #   @stats = [start.to_i, finish.to_i]
+  #   # Stats.get(:year => (start.to_i..finish.to_i))
+  #   session[:selection] = @stats
+  #   redirect '/'
+  # end
 
   # get 'stats/search' do
   #   'hello world'
