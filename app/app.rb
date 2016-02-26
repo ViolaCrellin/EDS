@@ -19,6 +19,12 @@ class EDS < Sinatra::Base
     Stats.all(:year => (start.to_i..finish.to_i)).to_json
   end
 
+  get '/gov' do
+    start = params[:start]
+    finish = params[:finish]
+    party = params[:party]
+    Stats.all(:gov => party.capitalize).to_json
+  end
 
   run! if app_file == $0
 
