@@ -1,1 +1,1 @@
-web: bundle exec rackup -p $PORT
+web: bundle exec app -C config/app.rb
