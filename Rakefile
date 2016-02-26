@@ -1,6 +1,15 @@
-require 'data_mapper'
-require './app/app.rb'
+begin
+  require 'rspec/core/rake_task'
+  require 'rubocop/rake_task'
+  require 'data_mapper'
+  require './app/app.rb'
 
+  RuboCop::RakeTask.new :cop
+  RSpec::Core::RakeTask.new :spec
+
+  task default: [:cop, :spec]
+rescue LoadError
+end
 
 namespace :db do
   desc "Non destructive upgrade"

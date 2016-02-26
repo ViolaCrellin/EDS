@@ -2,7 +2,7 @@
 ENV['RACK_ENV'] ||= 'development'
 
 require 'sinatra/base'
-require 'JSON'
+require 'json'
 require_relative 'data_mapper_setup'
 
 
