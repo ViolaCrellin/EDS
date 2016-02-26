@@ -1,4 +1,4 @@
-d3.json("http://localhost:9292/stats", function(data){
+d3.json("https://economic-debate-settler.herokuapp.com/stats", function(data){
 
 var width = 1000;
 var height = 1000;
