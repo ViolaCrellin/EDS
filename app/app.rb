@@ -10,7 +10,6 @@ class EDS < Sinatra::Base
   enable :sessions
 
   get '/' do
-    send_file 'eds.html'
   end
 
   get '/stats' do
@@ -23,8 +22,21 @@ class EDS < Sinatra::Base
     start = params[:start]
     finish = params[:finish]
     party = params[:party]
-    Stats.all(:gov => party.capitalize).to_json
+    if start.nil? || finish.nil?
+      party_stats = Stats.all(:gov => party.capitalize)
+      party_stats.to_json
+    else
+      party_stats.all(:year => (start.to_i..finish.to_i)).to_json
+    end
   end
+
+  get '/debt' do
+    # start = params[:start]
+    # finish = params[:finish]
+    Stats.get("net_national_debt_billions").to_json
+    # year_selection.net_national_debt_billions.to_json
+  end
+
 
   run! if app_file == $0
 
