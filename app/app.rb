@@ -10,6 +10,7 @@ class EDS < Sinatra::Base
   enable :sessions
 
   get '/' do
+    Stats.all.to_json
   end
 
   get '/stats' do
