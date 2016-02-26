@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <script src='jquery-2.2.0.js'></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script>
+        $.getJSON('https://economic-debate-settler.herokuapp.com/callback=?',  function(data) {
+          d3.json(function(data){
+
+          var width = 1000;
+          var height = 1000;
+
+          var widthScale = d3.scale.linear()
+                            .domain([1949, 2015])
+                            .range([0, width]);
+
+            var axis = d3.svg.axis()
+                      .scale(widthScale)
+                      .ticks(10);
+
+            var heightScale = d3.scale.linear()
+                              .domain([1949, 2015])
+                              .range([0, height]);
+
+            var colorScale = d3.scale.linear()
+                              .domain([1949, 2015])
+                              .range(["red", "black"]);
+
+            var canvas = d3.select("#visualisation").append("svg")
+                        .attr("width", width)
+                        .attr("height", height);
+
+            canvas.append("g")
+                  .attr("transform", "translate(0,height)")
+                  .call(axis)
+
+            var circle = canvas.selectAll("rect")
+                          .data(data)
+                          .enter()
+                            .append("rect")
+                            .attr("width", function(d){return widthScale(d.year);})
+                            .attr("height", 5)
+                            .attr("y", function(d,i) {return i*10;})
+                            .attr("fill", function(d){return colorScale(d.year);})
+
+          });
+        });
+    </script>
+  </head>
+  <body>
+    <div id="results">
+    </div>
+
+      <form id="data-filters" action="/stats" method="post">
+        <input id="start-year" name="start" type="text" placeholder="starting year (from 1950)"></input>
+        <input id="end-year" name="finish" type="text" placeholder="ending year (until 2014)"></input>
+
+
+        <button class="small" type="submit">Go</button>
+      </form>
+      <div id="visualisation"></div>
+    <div id="range">
+      <h1>range:</h1>
+      <div class="content"></div>
+    </div>
+
+  </body>
+</html>

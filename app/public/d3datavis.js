@@ -1,4 +1,4 @@
-d3.json("https://economic-debate-settler.herokuapp.com/stats", function(data){
+d3.json("localhost:9292/stats", function(data){
 
 var width = 1000;
 var height = 1000;
@@ -9,7 +9,7 @@ var widthScale = d3.scale.linear()
 
   var axis = d3.svg.axis()
             .scale(widthScale)
-            .ticks(10)
+            .ticks(10);
 
   var heightScale = d3.scale.linear()
                     .domain([1949, 2015])
